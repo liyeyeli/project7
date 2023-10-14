@@ -79,6 +79,21 @@ void LCD::draw_point(int x, int y,int color)
 {
 	*(lcd_p + x + y * 800) = color;
 }
+//画圆形接口
+//x,y表示圆心的坐标，r表示圆的半径
+void LCD::draw_circle(int x, int y, int r, int color)
+{
+	for (int i = 0; i < 800; i++)
+	{
+		for (int j = 0; j < 480; j++)
+		{
+			if (((x - i) * (x - i) + (y - j) * (y - j)) == (r * r))
+			{
+				draw_point(i,j, color);
+			}
+		}
+	}
+}
 //画矩形接口
 void LCD::draw_juxing(int color, int w, int h)
 {
